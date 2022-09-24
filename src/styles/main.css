@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body{
+	margin:0;
+	padding:0;
+	background-color: #5cdb95;
+	color: white;
+	font-family: 'Open Sans', 'sans-serif';
+}
+
+.ul {
+    gap: 4vh;
+}
+
+a{
+    text-decoration: none;
+    color: #05386B;
+}
+
+.flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#header{
+	font-family: 'Nunito', 'sans-serif';
+	justify-content: space-between;
+	padding: 2vh;
+	color: #05386B;
+}
