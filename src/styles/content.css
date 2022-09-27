@@ -11,3 +11,17 @@
 .subinfo{
 	font-weight: 200;	
 }
+
+
+svg{
+	fill: #05386B; 
+	pointer-events:all;
+}
+
+svg :hover{
+	fill: #aaaaaa;
+}
+
+svg .correct{
+	fill: #03ad20;	
+}
