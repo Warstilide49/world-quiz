@@ -25,6 +25,10 @@ a{
 	align-items: center;
 }
 
+.flex-column{
+	flex-direction:column;
+}
+
 #header{
 	font-family: 'Nunito', 'sans-serif';
 	justify-content: space-between;

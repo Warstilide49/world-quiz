@@ -13,15 +13,15 @@
 }
 
 
-svg{
+#map{
 	fill: #05386B; 
 	pointer-events:all;
 }
 
-svg :hover{
+#map :hover{
 	fill: #aaaaaa;
 }
 
-svg .correct{
+.correct{
 	fill: #03ad20;	
 }
