@@ -6,12 +6,12 @@
 	font-family : 'Montserrat', 'sans-serif';
 	font-weight: 500;
 
+	flex: 1;
 }
 
 .subinfo{
 	font-weight: 200;	
 }
-
 
 #map{
 	fill: #05386B; 

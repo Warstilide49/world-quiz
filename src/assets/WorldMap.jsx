@@ -12,12 +12,13 @@ function Map(props) {
   const openMenu = (e) =>{
     setShowModal(true);
     setCountryClicked([e, e.target.id]);
-    setMouseCoords([e.clientX, e.clientY]);
-    console.log(mouseCoords);
+    // const rect = e.target.getBoundingClientRect();
+    setMouseCoords([e.clientX , e.clientY]);
+    console.log(e.clientX, e.clientY);
   }
 
   return (
-    <div className='flex flex-column'>
+    <div className='map-holder flex flex-column'>
       <svg id='map'
         xmlns="http://www.w3.org/2000/svg"
         width={width}
