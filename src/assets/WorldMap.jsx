@@ -18,7 +18,7 @@ function Map(props) {
   }
 
   return (
-    <div className='map-holder flex flex-column'>
+    <div className='flex flex-column'>
       <svg id='map'
         xmlns="http://www.w3.org/2000/svg"
         width={width}
