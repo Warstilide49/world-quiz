@@ -9,6 +9,10 @@
 	flex: 1;
 }
 
+#play{
+	flex : 1;
+}
+
 .subinfo{
 	font-weight: 200;	
 }

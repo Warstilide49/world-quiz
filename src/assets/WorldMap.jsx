@@ -12,9 +12,7 @@ function Map(props) {
   const openMenu = (e) =>{
     setShowModal(true);
     setCountryClicked([e, e.target.id]);
-    // const rect = e.target.getBoundingClientRect();
     setMouseCoords([e.clientX , e.clientY]);
-    console.log(e.clientX, e.clientY);
   }
 
   return (
