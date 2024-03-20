@@ -1,5 +1,6 @@
 // import {useState, useEffect} from "react"
 import "../styles/modal.css"
+import countryNames from '../assets/countryNames.json';
 
 const Modal = (props) =>{
 
@@ -12,8 +13,8 @@ const Modal = (props) =>{
 	return(
 		<div className='modal_bg' onClick={(e) =>{setModal(false)}}>
 			<div className='modal' onClick={(e) =>{e.stopPropagation();}} style={{left: mouseCoords[0], top: mouseCoords[1]}}>
-				{countryClicked[1]}
-				<button onClick={test}>Bruh</button>
+				{countryNames[countryClicked[1]]}
+				{/* <button onClick={test}>Bruh</button> */}
 			</div>
 		</div>
 	)
