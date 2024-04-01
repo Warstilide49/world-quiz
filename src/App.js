@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import countryNames from './assets/countryNames.json';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
@@ -10,13 +10,15 @@ import { collection, getDocs } from 'firebase/firestore'
 
 function App() {
 
-  console.log(process.env);
-  const collectionRef = collection(database, 'levels');
-  getDocs(collectionRef).then((response)=>{
-    console.log(response.docs.map((item)=>{
-      return item.data();
-    }))
-  })
+  useEffect(()=> {
+    const collectionRef = collection(database, 'countries-to-find');
+    getDocs(collectionRef).then((response)=>{
+      console.log(response.docs.map((item)=>{
+        return item.data();
+      }))
+    })
+  }, [])
+
   const [flagsToFind, setFlagsToFind] = useState([])
 
   return (

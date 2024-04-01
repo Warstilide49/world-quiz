@@ -9,11 +9,11 @@
 	overflow-y: auto;
 	font-family: Nunito, sans-serif;
 	background-color:white;
-	border-radius: 2vh;
+	border-radius: 15px;
 	display: block;
 	text-align: center;
 	padding: 6px 4px;
-	width:10vh;
+	min-width: 60px;
 	position:absolute;
 }
 
