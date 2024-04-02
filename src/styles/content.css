@@ -1,31 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&family=Open+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&family=Open+Sans:wght@300&display=swap");
 
-#home{
-	flex-direction: column;
-	gap: 10vh;
-	font-family : 'Montserrat', 'sans-serif';
-	font-weight: 500;
+#home {
+  flex-direction: column;
+  gap: 10vh;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 500;
 
-	flex: 1;
+  flex: 1;
 }
 
-#play{
-	flex : 1;
+#play {
+  flex: 1;
 }
 
-.subinfo{
-	font-weight: 200;	
+.subinfo {
+  font-weight: 200;
 }
 
-#map{
-	fill: #05386B; 
-	pointer-events:all;
+#map {
+  fill: #05386b;
+  pointer-events: all;
 }
 
-#map :hover{
-	fill: #aaaaaa;
+#map :hover {
+  fill: #aaaaaa;
 }
 
-.correct{
-	fill: #03ad20;	
+.correct {
+  fill: #03ad20;
 }

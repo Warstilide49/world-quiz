@@ -1,15 +1,13 @@
 import React from "react";
 
-
 /*width="1928.038"
       height="2256.98" */
-function EarthGlobe({width, height, colour}) {
+function EarthGlobe({ width, height, colour }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width = {width}
-      height = {height}
-      
+      width={width}
+      height={height}
       version="1.1"
       viewBox="0 0 1807.536 2115.919"
     >

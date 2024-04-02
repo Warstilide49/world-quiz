@@ -1,36 +1,36 @@
 .modal {
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 24px;
-    font-family: 'Nunito', 'sans-serif';
-    color: black;
+  background-color: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  font-family: "Nunito", "sans-serif";
+  color: black;
 }
 
 .modal p {
-    margin: 0;
+  margin: 0;
 }
 
 .modal input {
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 8px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 8px;
 }
 
 .playButton {
-    align-self: stretch;
-    background-color: #8EE4AF;
-    outline: 0;
-    border: 0;
-    border-radius: 14px;
-    padding: 10px;
-    font-family: 'Nunito', 'sans-serif';
-    cursor: pointer;
+  align-self: stretch;
+  background-color: #8ee4af;
+  outline: 0;
+  border: 0;
+  border-radius: 14px;
+  padding: 10px;
+  font-family: "Nunito", "sans-serif";
+  cursor: pointer;
 }
 
 .playButton:disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
