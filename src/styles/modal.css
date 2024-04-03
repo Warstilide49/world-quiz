@@ -14,9 +14,17 @@
   border-radius: 15px;
   display: block;
   text-align: center;
-  padding: 6px 4px;
+  padding: 6px 14px;
   min-width: 60px;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal div {
+  display: flex;
+  gap: 10px;
 }
 
 .modal_container {

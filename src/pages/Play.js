@@ -37,7 +37,6 @@ const Play = ({ allChoices }) => {
           Object.keys(flagsToFind).map((element) => (
             <ReactCountryFlag
               key={element}
-              className="emojiFlag"
               countryCode={element}
               style={{
                 fontSize: "2em",

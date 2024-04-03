@@ -1,9 +1,10 @@
 // import {useState, useEffect} from "react"
 import "../styles/modal.css";
 import countryNames from "../assets/countryNames.json";
+import ReactCountryFlag from "react-country-flag";
 
 const Modal = (props) => {
-  const { countryClicked, mouseCoords, setModal } = props;
+  const { countryClicked, flagsToFind, mouseCoords, setModal } = props;
 
   return (
     <div
@@ -22,7 +23,21 @@ const Modal = (props) => {
           top: `${mouseCoords[1] + 5}px`,
         }}
       >
-        {countryNames[countryClicked[1]]}
+        <p>Choose your answer</p>
+        <div>
+        {Object.keys(flagsToFind).map((element) => (
+            <ReactCountryFlag
+              key={element}
+              className="emoji-flag"
+              countryCode={element}
+              style={{
+                fontSize: "2em"
+              }}
+              aria-label={countryNames[element]}
+            />
+          ))}
+        </div>
+        {/* {countryNames[countryClicked[1]]} */}
         {/* <button onClick={test}>Bruh</button> */}
       </div>
     </div>
