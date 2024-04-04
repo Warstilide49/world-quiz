@@ -2,9 +2,42 @@
 import "../styles/modal.css";
 import countryNames from "../assets/countryNames.json";
 import ReactCountryFlag from "react-country-flag";
+import { useEffect, useState } from "react";
 
 const Modal = (props) => {
-  const { countryClicked, flagsToFind, mouseCoords, setModal } = props;
+  const { countryClicked, showUserModal, flagsToFind, setFlagsToFind, mouseCoords, setModal } = props;
+  const [filteredFlags, setFilteredFlags] = useState({});
+  
+  useEffect(()=> {
+    const filteredArray = Object.keys(flagsToFind).filter(objKey => !flagsToFind[objKey].isItRight).reduce((newObj, key) => {
+        newObj[key] = flagsToFind[key];
+        return newObj;
+      }, {});
+    setFilteredFlags(filteredArray)
+    }, [flagsToFind])
+
+  const selectCountry = (selectedCode) => {
+    if(countryClicked === selectedCode) {
+      flagsToFind[countryClicked].hasBeenSelected = true;
+      flagsToFind[countryClicked].isItRight = true;
+    }
+    else {
+      if(flagsToFind[selectedCode]) {
+        flagsToFind[selectedCode].hasBeenSelected = true;
+      }
+    }
+    setFlagsToFind(JSON.parse(JSON.stringify(flagsToFind)))
+    checkIfGameShouldEnd();
+    setModal(false);
+  }
+
+  const checkIfGameShouldEnd = () => {
+    const isEveryFlagGuessed = Object.keys(flagsToFind).every((country)=> flagsToFind[country].isItRight );
+    if(!isEveryFlagGuessed) {
+      return;
+    }
+    console.log("Add fancy animation here")
+  }
 
   return (
     <div
@@ -25,19 +58,24 @@ const Modal = (props) => {
       >
         <p>Choose your answer</p>
         <div>
-        {Object.keys(flagsToFind).map((element) => (
+        {!showUserModal &&
+          Object.keys(filteredFlags).map((code) => (
             <ReactCountryFlag
-              key={element}
-              className="emoji-flag"
-              countryCode={element}
+              key={code}
+              onClick={() => {selectCountry(code)}}
+              // className={flagsToFind[code].hasBeenSelected ? 'selected' : ""}
+              svg
+              countryCode={code}
+              title={countryNames[code]}
               style={{
-                fontSize: "2em"
+                fontSize: "2em",
+                lineHeight: "2em",
               }}
-              aria-label={countryNames[element]}
+              aria-label={countryNames[code]}
             />
           ))}
         </div>
-        {/* {countryNames[countryClicked[1]]} */}
+        {/* {countryNames[countryClicked]} */}
         {/* <button onClick={test}>Bruh</button> */}
       </div>
     </div>

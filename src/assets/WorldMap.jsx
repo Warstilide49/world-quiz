@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "../components/Modal";
 
 function Map(props) {
-  const { flagsToFind, width, height } = props;
+  const { flagsToFind, showUserModal, setFlagsToFind, width, height } = props;
   const [showModal, setShowModal] = useState(false);
   const [countryClicked, setCountryClicked] = useState([]);
   // For placement of modal around the mouse coords
@@ -14,7 +14,7 @@ function Map(props) {
     }
 
     setShowModal(true);
-    setCountryClicked([e, e.target.id]);
+    setCountryClicked(e.target.id);
     const rect = e.currentTarget.getBoundingClientRect();
     setMouseCoords([e.clientX - rect.left, e.clientY - rect.top]);
   };
@@ -817,6 +817,8 @@ function Map(props) {
           setModal={setShowModal}
           mouseCoords={mouseCoords}
           flagsToFind={flagsToFind}
+          setFlagsToFind={setFlagsToFind}
+          showUserModal={showUserModal}
         />
       )}
     </div>

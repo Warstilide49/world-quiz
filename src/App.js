@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import countryNames from "./assets/countryNames.json";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
 import Home from "./pages/Home";
 import Play from "./pages/Play";
-import { app, database } from "./firebaseConfig.js";
+import { database } from "./firebaseConfig.js";
 import { collection, getDocs } from "firebase/firestore";
 
 function App() {

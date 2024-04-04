@@ -72,3 +72,8 @@ a {
 .emoji-flag {
   cursor: pointer;
 }
+
+/* Needs to be changed(preferrably a checkmark comes up on top) */
+.selected {
+  filter: grayscale(100%);
+}
