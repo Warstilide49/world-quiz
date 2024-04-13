@@ -12,6 +12,7 @@ const Modal = (props) => {
     setFlagsToFind,
     mouseCoords,
     setModal,
+    setTimerCommand,
   } = props;
   const [filteredFlags, setFilteredFlags] = useState({});
 
@@ -46,6 +47,7 @@ const Modal = (props) => {
     if (!isEveryFlagGuessed) {
       return;
     }
+    setTimerCommand("pause");
     console.log("Add fancy animation here");
   };
 

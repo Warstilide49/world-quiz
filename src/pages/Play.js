@@ -3,6 +3,7 @@ import ReactCountryFlag from "react-country-flag";
 import countryNames from "../assets/countryNames.json";
 import { useEffect, useState } from "react";
 import UserInfo from "../components/UserInfo";
+import Timer from "../components/Timer";
 import styles from "../styles/play.module.css";
 import tickMark from "../assets/icons/check-mark 1.svg";
 import wrongMark from "../assets/icons/no 1.svg";
@@ -10,12 +11,15 @@ import wrongMark from "../assets/icons/no 1.svg";
 const Play = ({ allChoices }) => {
   const [username, setUsername] = useState("");
   const [level, setLevel] = useState("Easy");
-  const [showUserModal, setShowUserModal] = useState(null);
+  const [showUserModal, setShowUserModal] = useState(true);
   const [flagsToFind, setFlagsToFind] = useState({});
+  const [timerCommand, setTimerCommand] = useState("pause");
 
   useEffect(() => {
-    setShowUserModal(true);
-  }, []);
+    if (!showUserModal) {
+      setTimerCommand("play");
+    }
+  }, [showUserModal]);
 
   useEffect(() => {
     const LEVELS = ["Easy", "Medium", "Hard"];
@@ -43,42 +47,45 @@ const Play = ({ allChoices }) => {
           setLevel={setLevel}
         />
       )}
-      <div className={styles.flagHolder}>
-        {!showUserModal &&
-          Object.keys(flagsToFind).map((code) => (
-            <div className="flag-container" key={code}>
-              <ReactCountryFlag
-                svg
-                className={`emoji-flag ${flagsToFind[code].hasBeenSelected ? "selected" : ""}`}
-                countryCode={code}
-                title={countryNames[code]}
-                style={{
-                  fontSize: "2em",
-                }}
-                aria-label={countryNames[code]}
-              />
-              {flagsToFind[code].isItRight &&
-                flagsToFind[code].hasBeenSelected && (
-                  <img
-                    src={tickMark}
-                    className="flag-result"
-                    alt="Correct"
-                    width="20px"
-                    height="20px"
-                  ></img>
-                )}
-              {!flagsToFind[code].isItRight &&
-                flagsToFind[code].hasBeenSelected && (
-                  <img
-                    src={wrongMark}
-                    className="flag-result"
-                    alt="Wrong"
-                    width="20px"
-                    height="20px"
-                  ></img>
-                )}
-            </div>
-          ))}
+      <div className={styles.timeAndFlag}>
+        <Timer command={timerCommand} />
+        <div className={styles.flagHolder}>
+          {!showUserModal &&
+            Object.keys(flagsToFind).map((code) => (
+              <div className="flag-container" key={code}>
+                <ReactCountryFlag
+                  svg
+                  className={`emoji-flag ${flagsToFind[code].hasBeenSelected ? "selected" : ""}`}
+                  countryCode={code}
+                  title={countryNames[code]}
+                  style={{
+                    fontSize: "2em",
+                  }}
+                  aria-label={countryNames[code]}
+                />
+                {flagsToFind[code].isItRight &&
+                  flagsToFind[code].hasBeenSelected && (
+                    <img
+                      src={tickMark}
+                      className="flag-result"
+                      alt="Correct"
+                      width="20px"
+                      height="20px"
+                    ></img>
+                  )}
+                {!flagsToFind[code].isItRight &&
+                  flagsToFind[code].hasBeenSelected && (
+                    <img
+                      src={wrongMark}
+                      className="flag-result"
+                      alt="Wrong"
+                      width="20px"
+                      height="20px"
+                    ></img>
+                  )}
+              </div>
+            ))}
+        </div>
       </div>
       <Map
         width="85vw"
@@ -86,6 +93,7 @@ const Play = ({ allChoices }) => {
         flagsToFind={flagsToFind}
         setFlagsToFind={setFlagsToFind}
         showUserModal={showUserModal}
+        setTimerCommand={setTimerCommand}
       />
     </div>
   );
