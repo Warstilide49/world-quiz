@@ -1,6 +1,6 @@
 .timer {
   border-radius: 10px;
-  padding: 0 8px;
+  padding: 12px 8px;
   min-width: 120px;
   display: flex;
   justify-content: center;
@@ -8,7 +8,10 @@
   color: rgba(0, 0, 0, 0.7);
   font-family: "Nunito", "sans-serif";
   background-color: #c4e686;
-  /* overflow: hidden; */
+}
+
+.timer h3 {
+  margin: 0;
 }
 
 .timer::before,
@@ -18,13 +21,21 @@
   z-index: -1;
   inset: -3px;
   border-radius: inherit;
-  background: linear-gradient(45deg, var(--secondary), #daa520, #708090);
+  background: linear-gradient(
+    45deg,
+    var(--secondary),
+    #daa520,
+    #708090,
+    #ff7f50,
+    #e6e6fa,
+    #ffdb58
+  );
   background-size: 400%;
   animation: rotation 20s linear infinite;
 }
 
 .timer::after {
-  filter: blur(10px);
+  filter: blur(8px);
 }
 
 @keyframes rotation {

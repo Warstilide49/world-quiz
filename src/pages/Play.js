@@ -15,6 +15,7 @@ const Play = ({ allChoices }) => {
   const [flagsToFind, setFlagsToFind] = useState({});
   const [timerCommand, setTimerCommand] = useState("pause");
   const [isGameOver, setIsGameOver] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
 
   useEffect(() => {
     if (!showUserModal) {
@@ -38,6 +39,14 @@ const Play = ({ allChoices }) => {
     setFlagsToFind(countries);
   }, [allChoices, level]);
 
+  useEffect(() => {
+    setCorrectAnswers(
+      Object.values(flagsToFind).reduce(
+        (prev, current) => prev + current.isItRight,
+        0,
+      ) || 0,
+    );
+  }, [flagsToFind]);
   return (
     <div className="flex flex-column" id="play">
       {showUserModal && (
@@ -86,6 +95,10 @@ const Play = ({ allChoices }) => {
                   )}
               </div>
             ))}
+        </div>
+        <div className={styles.resultText}>
+          {correctAnswers}/{Object.keys(flagsToFind).length} correct, {username}
+          !
         </div>
       </div>
       <Map
