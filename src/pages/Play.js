@@ -14,6 +14,7 @@ const Play = ({ allChoices }) => {
   const [showUserModal, setShowUserModal] = useState(true);
   const [flagsToFind, setFlagsToFind] = useState({});
   const [timerCommand, setTimerCommand] = useState("pause");
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
     if (!showUserModal) {
@@ -94,6 +95,8 @@ const Play = ({ allChoices }) => {
         setFlagsToFind={setFlagsToFind}
         showUserModal={showUserModal}
         setTimerCommand={setTimerCommand}
+        isGameOver={isGameOver}
+        setIsGameOver={setIsGameOver}
       />
     </div>
   );

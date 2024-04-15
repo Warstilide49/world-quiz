@@ -7,6 +7,8 @@ function Map(props) {
     showUserModal,
     setTimerCommand,
     setFlagsToFind,
+    isGameOver,
+    setIsGameOver,
     width,
     height,
   } = props;
@@ -16,7 +18,7 @@ function Map(props) {
   const [mouseCoords, setMouseCoords] = useState([]);
 
   const openMenu = (e) => {
-    if (e.target.id === "map") {
+    if (e.target.id === "map" || isGameOver) {
       return;
     }
 
@@ -826,6 +828,7 @@ function Map(props) {
           flagsToFind={flagsToFind}
           setFlagsToFind={setFlagsToFind}
           showUserModal={showUserModal}
+          setIsGameOver={setIsGameOver}
           setTimerCommand={setTimerCommand}
         />
       )}

@@ -16,6 +16,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  --primary: #05386b;
+  --secondary: #8ee4af;
+  --tertiary: #fff;
 }
 
 .ul {

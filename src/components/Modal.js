@@ -10,6 +10,7 @@ const Modal = (props) => {
     showUserModal,
     flagsToFind,
     setFlagsToFind,
+    setIsGameOver,
     mouseCoords,
     setModal,
     setTimerCommand,
@@ -47,6 +48,7 @@ const Modal = (props) => {
     if (!isEveryFlagGuessed) {
       return;
     }
+    setIsGameOver(true);
     setTimerCommand("pause");
     console.log("Add fancy animation here");
   };
