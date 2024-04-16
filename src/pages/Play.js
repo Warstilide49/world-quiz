@@ -7,6 +7,8 @@ import Timer from "../components/Timer";
 import styles from "../styles/play.module.css";
 import tickMark from "../assets/icons/check-mark 1.svg";
 import wrongMark from "../assets/icons/no 1.svg";
+import { doc, setDoc } from "firebase/firestore";
+import { database } from "../firebaseConfig";
 
 const Play = ({ allChoices }) => {
   const [username, setUsername] = useState("");
@@ -14,6 +16,7 @@ const Play = ({ allChoices }) => {
   const [showUserModal, setShowUserModal] = useState(true);
   const [flagsToFind, setFlagsToFind] = useState({});
   const [timerCommand, setTimerCommand] = useState("pause");
+  const [time, setTime] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
@@ -47,6 +50,21 @@ const Play = ({ allChoices }) => {
       ) || 0,
     );
   }, [flagsToFind]);
+
+  useEffect(() => {
+    async function postData() {
+      if (isGameOver) {
+        console.log("HI");
+        // Add a new document in collection "leaderboard"
+        await setDoc(doc(database, "leaderboard", "LA"), {
+          name: username,
+          time: time.toFixed(3),
+        });
+      }
+    }
+    postData();
+  }, [isGameOver]);
+
   return (
     <div className="flex flex-column" id="play">
       {showUserModal && (
@@ -58,10 +76,10 @@ const Play = ({ allChoices }) => {
         />
       )}
       <div className={styles.timeAndFlag}>
-        <Timer command={timerCommand} />
-        <div className={styles.flagHolder}>
-          {!showUserModal &&
-            Object.keys(flagsToFind).map((code) => (
+        <Timer time={time} setTime={setTime} command={timerCommand} />
+        {!showUserModal && (
+          <div className={styles.flagHolder}>
+            {Object.keys(flagsToFind).map((code) => (
               <div className="flag-container" key={code}>
                 <ReactCountryFlag
                   svg
@@ -95,11 +113,14 @@ const Play = ({ allChoices }) => {
                   )}
               </div>
             ))}
-        </div>
-        <div className={styles.resultText}>
-          {correctAnswers}/{Object.keys(flagsToFind).length} correct, {username}
-          !
-        </div>
+          </div>
+        )}
+        {!showUserModal && (
+          <div className={styles.resultText}>
+            {correctAnswers}/{Object.keys(flagsToFind).length} correct,{" "}
+            {username}!
+          </div>
+        )}
       </div>
       <Map
         width="85vw"

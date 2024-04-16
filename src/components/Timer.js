@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/timer.module.css";
 
-const Timer = ({ command }) => {
-  const [time, setTime] = useState(0);
+const Timer = ({ time, setTime, command }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
