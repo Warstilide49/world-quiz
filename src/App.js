@@ -5,6 +5,7 @@ import Footer from "./components/Footer.js";
 import LoadingScreen from "./components/LoadingScreen.js";
 import Home from "./pages/Home";
 import Play from "./pages/Play";
+import Scoreboard from "./pages/Scoreboard.js"
 import { database } from "./firebaseConfig.js";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -35,6 +36,10 @@ function App() {
         <Route
           path="/world-quiz/play"
           element={<Play allChoices={allChoices} />}
+        />
+        <Route
+          path="/world-quiz/scoreboard"
+          element={<Scoreboard setIsLoading={setIsLoading}/>}
         />
       </Routes>
       <Footer />

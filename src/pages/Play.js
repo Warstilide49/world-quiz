@@ -56,7 +56,7 @@ const Play = ({ allChoices }) => {
       if (isGameOver) {
         console.log("HI");
         // Add a new document in collection "leaderboard"
-        await setDoc(doc(database, "leaderboard", "LA"), {
+        await setDoc(doc(database, "leaderboard", username), {
           name: username,
           time: time.toFixed(3),
         });

@@ -17,7 +17,7 @@ const Home = () => {
       </div>
       <div>
         <h3>
-          Check out the <Link>scoreboard</Link> for scores to beat!
+          Check out the <Link to="/world-quiz/scoreboard">scoreboard</Link> for scores to beat!
         </h3>
       </div>
     </div>
