@@ -18,3 +18,18 @@
   color: rgba(0, 0, 0, 0.7);
   font-family: "Nunito", "sans-serif";
 }
+
+.restartButton button {
+  cursor: pointer;
+  padding: 8px;
+  background-color: #c4e686;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.2rem;
+  color: #05386b;
+  border: 0;
+  border-radius: 8px;
+}
+
+.restartButton button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}

@@ -76,6 +76,7 @@ const Modal = (props) => {
             Object.keys(filteredFlags).map((code) => (
               <ReactCountryFlag
                 key={code}
+                className="emoji-flag"
                 onClick={() => {
                   selectCountry(code);
                 }}

@@ -1,0 +1,16 @@
+.confirmation_modal {
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    font-family: "Nunito", "sans-serif";
+    color: black;
+}
+
+.buttons {
+    display: flex;
+    gap: 24px;
+}

@@ -3,6 +3,7 @@ import ReactCountryFlag from "react-country-flag";
 import countryNames from "../assets/countryNames.json";
 import { useEffect, useState } from "react";
 import UserInfo from "../components/UserInfo";
+import ConfirmationModal from "../components/ConfirmationModal";
 import Timer from "../components/Timer";
 import styles from "../styles/play.module.css";
 import tickMark from "../assets/icons/check-mark 1.svg";
@@ -14,6 +15,7 @@ const Play = ({ allChoices }) => {
   const [username, setUsername] = useState("");
   const [level, setLevel] = useState("Easy");
   const [showUserModal, setShowUserModal] = useState(true);
+  const [showRestartModal, setShowRestartModal] = useState(false);
   const [flagsToFind, setFlagsToFind] = useState({});
   const [timerCommand, setTimerCommand] = useState("pause");
   const [time, setTime] = useState(0);
@@ -21,10 +23,16 @@ const Play = ({ allChoices }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
   useEffect(() => {
-    if (!showUserModal) {
+    if (!showUserModal && !showRestartModal) {
       setTimerCommand("play");
+    } else {
+      setTimerCommand("pause");
     }
-  }, [showUserModal]);
+
+    if (isGameOver) {
+      setTimerCommand("pause");
+    }
+  }, [showUserModal, showRestartModal, isGameOver]);
 
   useEffect(() => {
     const LEVELS = ["Easy", "Medium", "Hard"];
@@ -46,8 +54,8 @@ const Play = ({ allChoices }) => {
     setCorrectAnswers(
       Object.values(flagsToFind).reduce(
         (prev, current) => prev + current.isItRight,
-        0,
-      ) || 0,
+        0
+      ) || 0
     );
   }, [flagsToFind]);
 
@@ -65,6 +73,18 @@ const Play = ({ allChoices }) => {
     postData();
   }, [isGameOver]);
 
+  const restartGame = () => {
+    const currentFlags = flagsToFind;
+    Object.values(currentFlags).forEach((flag) => {
+      flag.isItRight = false;
+      flag.hasBeenSelected = false;
+    });
+    setFlagsToFind(currentFlags);
+    setTimerCommand("reset");
+    setShowRestartModal(false);
+    setIsGameOver(false);
+  };
+
   return (
     <div className="flex flex-column" id="play">
       {showUserModal && (
@@ -73,6 +93,13 @@ const Play = ({ allChoices }) => {
           username={username}
           setUsername={setUsername}
           setLevel={setLevel}
+        />
+      )}
+      {showRestartModal && (
+        <ConfirmationModal
+          setModal={setShowRestartModal}
+          message="Are you sure you want to restart"
+          onRestart={restartGame}
         />
       )}
       <div className={styles.timeAndFlag}>
@@ -132,6 +159,15 @@ const Play = ({ allChoices }) => {
         isGameOver={isGameOver}
         setIsGameOver={setIsGameOver}
       />
+      <div className={styles.restartButton}>
+        <button
+          onClick={() => {
+            setShowRestartModal(true);
+          }}
+        >
+          Want to Restart?
+        </button>
+      </div>
     </div>
   );
 };

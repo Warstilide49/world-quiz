@@ -84,3 +84,20 @@ a {
 .selected {
   filter: grayscale(100%);
 }
+
+.button {
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-family: 'Nunito', 'sans-serif';
+  cursor: pointer;
+}
+
+.button-primary {
+  background-color: #05386b;
+  color: white;
+}
+
+.button-secondary {
+  color: #05386b;
+  background-color: white;
+}
