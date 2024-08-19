@@ -4,6 +4,7 @@ import countryNames from "../assets/countryNames.json";
 import { useEffect, useState } from "react";
 import UserInfo from "../components/UserInfo";
 import ConfirmationModal from "../components/ConfirmationModal";
+import CelebrationModal from "../components/CelebrationModal";
 import Timer from "../components/Timer";
 import styles from "../styles/play.module.css";
 import tickMark from "../assets/icons/check-mark 1.svg";
@@ -100,6 +101,11 @@ const Play = ({ allChoices }) => {
           setModal={setShowRestartModal}
           message="Are you sure you want to restart"
           onRestart={restartGame}
+        />
+      )}
+      {isGameOver && (
+        <CelebrationModal
+          setModal={setShowRestartModal}
         />
       )}
       <div className={styles.timeAndFlag}>
